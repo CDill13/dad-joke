@@ -1,20 +1,31 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Joke } from '../components/models/joke';
+import { concatMap, map, Observable } from 'rxjs';
+import { IJoke } from '../components/utils/jokes.types';
+import { ISearchResponse } from '../components/utils/jokes.types';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JokeService {
   private jokeAPI = 'https://icanhazdadjoke.com/';
   private http = inject(HttpClient);
 
-  public getRandomJoke(): Observable<Joke> {    
-    return this.http.get<Joke>(this.jokeAPI, {headers: new HttpHeaders({'Accept': 'application/json'})}).pipe()
+  public getRandomJoke(): Observable<IJoke> {
+    return this.http.get<IJoke>(this.jokeAPI, {
+      headers: new HttpHeaders({ Accept: 'application/json' }),
+    });
   }
 
-  public getJokeBySearch(searchTerm: string): Observable<Joke> {
-    return this.http.get<Joke>(this.jokeAPI + '/search?term=' + searchTerm, {headers: new HttpHeaders({'Accept': 'application/json'})}).pipe()
+  public getJokesBySearch(searchTerm: string): Observable<IJoke[]> {
+    return this.http
+      .get<ISearchResponse>(this.jokeAPI + '/search?term=' + searchTerm, {
+        headers: new HttpHeaders({ Accept: 'application/json' }),
+      })
+      .pipe(
+        map((result: ISearchResponse) => {
+          return result.results;
+        })
+      );
   }
 }
