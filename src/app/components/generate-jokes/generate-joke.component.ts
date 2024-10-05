@@ -26,9 +26,10 @@ export class GenerateJokesComponent {
   constructor(private jokeService: JokeService) {}
 
   public getJoke(): void {
-    this.jokeService.getRandomJoke().pipe(take(1)).subscribe((joke: IJoke) =>
-      this.joke.set(joke)
-    );
+    this.jokeService
+      .getRandomJoke()
+      .pipe(take(1))
+      .subscribe((joke: IJoke) => this.joke.set(joke));
   }
 
   public saveToFavorites() {
