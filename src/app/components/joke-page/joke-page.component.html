@@ -1,6 +1,7 @@
-<div [style.background-color]="backgroundColor">
-  <h1>How's this for a knee-slapper?</h1>
-  <p>{{ jokeText() }}</p>
+<div class="joke-page-container" [style.background-color]="backgroundColor">
+  <div class="color-mask">
+    <h1>Ain't that a knee-slapper?</h1>
+    <p>{{ jokeText() }}</p>
+  </div>
   <button (click)="saveToFavorites()">I like this one!</button>
-  <a [routerLink]="'/home'">C'mon back home!</a>
 </div>

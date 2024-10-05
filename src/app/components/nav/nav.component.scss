@@ -1,0 +1,13 @@
+.nav-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin: 10px;
+  }
+  h1:hover {
+    cursor: pointer;
+    color: blue;
+  }
+}

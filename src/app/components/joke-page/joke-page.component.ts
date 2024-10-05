@@ -29,11 +29,11 @@ export class JokePageComponent implements OnInit {
     this.getJokeById();
   }
 
-  stringToColor(str: string): string {
+  stringToColor(jokeId: string): string {
     let hash = 0;
 
-    for (let i = 0; i < str.length; i++) {
-      hash += str.charCodeAt(i);
+    for (let i = 0; i < jokeId.length; i++) {
+      hash += jokeId.charCodeAt(i);
     }
 
     const r = hash % 256;
@@ -52,5 +52,8 @@ export class JokePageComponent implements OnInit {
   saveToFavorites() {
     const newJoke: IJoke = { id: this.jokeId, joke: this.jokeText() };
     this.jokeService.saveToFavorites(newJoke);
+    alert(
+      'Since you like it so much you can read it in your favorites any time you like, sport!'
+    );
   }
 }
