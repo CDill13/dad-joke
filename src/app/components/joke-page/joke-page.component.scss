@@ -1,9 +1,10 @@
 .joke-page-container {
+  min-height: calc(100vh - 16em);
   height: 100%;
-  padding: 0.625em 1em;
+  padding: 0 1em;
+  text-align: center;
 
   .color-mask {
-    text-align: center;
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 1em;
     padding: 0.5em 0.75em;

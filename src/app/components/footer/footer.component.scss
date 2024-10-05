@@ -1,11 +1,10 @@
 .footer-cont {
   min-height: 3em;
   max-width: 100%;
-  margin-top: 3em;
-  padding: 1.2em 0em 0.5em 10em;
+  padding: 1em 0em 0.75em;
   background-color: lightslategray;
-  display: grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   position: sticky;
 
