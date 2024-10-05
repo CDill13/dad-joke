@@ -12,8 +12,6 @@
   right: 0;
 
   p {
-    display: flex;
-    justify-items: center;
     font-size: 1.5em;
     height: 2em;
 
@@ -21,16 +19,19 @@
       text-decoration: none;
       color: black !important;
       font-weight: bold;
+
+      &:hover {
+        color: blue !important;
+      }
     }
 
     div > p {
       text-align: right;
     }
 
-    img {
-      margin: 0 0.5em;
-      background-color: transparent;
-      max-height: 1.5em;
+    fa-icon {
+      margin-left: 0.2em;
+      font-size: 1.2em;
     }
   }
 }

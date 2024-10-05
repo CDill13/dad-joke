@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { of } from 'rxjs';
 
@@ -43,6 +45,7 @@ describe('JokeSearchComponent', () => {
     component.ngOnInit();
     expect(component.jokeSearchForm instanceof UntypedFormGroup).toBeTrue();
     expect(component.jokeSearchForm?.value.searchTerm).toBe('');
+    expect(component.faMagnifyingGlass()).toEqual(faMagnifyingGlass);
   });
 
   it('should alert and not search when searchTerm is empty', () => {

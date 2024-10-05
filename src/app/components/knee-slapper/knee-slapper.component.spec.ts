@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
+import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { JokeService } from '../../services/joke.service';
 import { KneeSlapperComponent } from './knee-slapper.component';
@@ -31,6 +32,10 @@ describe('KneeSlapperComponent', () => {
 
   it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set faHeart correctly', () => {
+    expect(component.faHeart()).toEqual(faHeart);
   });
 
   it('should not save a joke to favorites and show an alert if joke is undefined', () => {
