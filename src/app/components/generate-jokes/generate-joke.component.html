@@ -1,6 +1,6 @@
 <div class="gen-joke-cont">
   <button (click)="getJoke()">PULL MY FINGER</button>
-  @if (joke()?.joke === '') {
+  @if (joke() === undefined) {
   <p>(if you dare)</p>
   }
   <app-joke [joke]="joke()"></app-joke>
