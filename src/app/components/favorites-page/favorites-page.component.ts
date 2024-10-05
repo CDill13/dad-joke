@@ -4,11 +4,11 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { JokeService } from '../../services/joke.service';
-import { IJoke } from '../utils/jokes.types';
-import { JokeComponent } from '../joke/joke.component';
 import { NgForOf } from '@angular/common';
-import { take } from 'rxjs';
+
+import { JokeService } from '../../services/joke.service';
+import { JokeComponent } from '../joke/joke.component';
+import { IJoke } from '../utils/jokes.types';
 
 @Component({
   selector: 'app-favorites-page',
@@ -19,14 +19,15 @@ import { take } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavoritesPageComponent implements OnInit {
-  favoriteJokes = signal<IJoke[]>([]);
+  public favoriteJokes = signal<IJoke[]>([]);
 
   constructor(private jokeService: JokeService) {}
-  ngOnInit(): void {
+
+  public ngOnInit(): void {
     this.favoriteJokes.set(this.jokeService.getFavorites());
   }
-  removeFromFavorites(id: IJoke['id']) {
-    this.jokeService.removeFromFavorites(id);
-    this.favoriteJokes.set(this.jokeService.getFavorites());
+
+  public removeFromFavorites(id: IJoke['id']) {
+    this.favoriteJokes.set(this.jokeService.removeFromFavorites(id));
   }
 }
