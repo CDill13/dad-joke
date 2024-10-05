@@ -50,4 +50,11 @@ export class JokeSearchComponent implements OnInit {
         });
     }
   }
+  saveToFavorites(id: any, joke: any) {
+    const newJoke: IJoke = { id, joke };
+    this.jokeService.saveToFavorites(newJoke);
+    alert(
+      'Since you like it so much you can read it in your favorites any time you like, sport!'
+    );
+  }
 }

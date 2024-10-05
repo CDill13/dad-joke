@@ -30,4 +30,12 @@ export class GenerateJokesComponent {
       this.jokeId.set(joke.id);
     });
   }
+
+  saveToFavorites() {
+    const newJoke: IJoke = { id: this.jokeId(), joke: this.jokeText() };
+    this.jokeService.saveToFavorites(newJoke);
+    alert(
+      'Since you like it so much you can read it in your favorites any time you like, sport!'
+    );
+  }
 }
