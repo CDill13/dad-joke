@@ -1,8 +1,10 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { FavoritesPageComponent } from './favorites-page.component';
-import { JokeService } from '../../services/joke.service';
-import { IJoke } from '../utils/jokes.types';
+
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
+
+import { JokeService } from '../../services/joke.service';
+import { FavoritesPageComponent } from './favorites-page.component';
+import { IJoke } from '../utils/jokes.types';
 
 describe('FavoritesPageComponent', () => {
   let component: FavoritesPageComponent;
