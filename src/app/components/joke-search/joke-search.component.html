@@ -1,16 +1,18 @@
 <div class="search-cont">
   <form [formGroup]="jokeSearchForm" (ngSubmit)="searchJokes()">
-    <h2>Search for jokes with a keyword or phrase</h2>
-    <input type="text" formControlName="searchTerm" id="searchTerm" />
+    <input
+      placeholder="What's so funny?"
+      type="text"
+      formControlName="searchTerm"
+      id="searchTerm"
+    />
     <button class="button" type="submit">search</button>
   </form>
 
   @for(joke of searchedJokes(); track joke.id) {
-    <div class="joke-item">
-      <app-joke [joke]="joke"></app-joke>
-      <button (click)="saveToFavorites(joke)">
-        That's a knee slapper!
-      </button>
-    </div>
+  <div class="joke-item">
+    <app-joke [joke]="joke"></app-joke>
+    <button (click)="saveToFavorites(joke)">That's a knee slapper!</button>
+  </div>
   }
 </div>

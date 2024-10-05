@@ -4,7 +4,7 @@
   <p>(if you dare)</p>
   }
   <app-joke [joke]="joke()"></app-joke>
-  @if (joke()?.joke !== '') {
+  @if (joke() !== undefined) {
   <button (click)="saveToFavorites()">That's a knee slapper!</button>
   }
 </div>
