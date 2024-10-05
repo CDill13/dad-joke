@@ -1,10 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  input,
   Input,
   OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { IJoke } from '../utils/jokes.types';
 
 @Component({
   selector: 'app-joke',
@@ -15,6 +17,8 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JokeComponent {
+  public joke = input<IJoke>();
+
   constructor(private router: Router) {}
 
   @Input() jokeText!: string;

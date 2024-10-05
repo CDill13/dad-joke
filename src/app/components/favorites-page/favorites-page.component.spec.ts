@@ -44,7 +44,7 @@ describe('FavoritesPageComponent', () => {
 
   it('should remove a joke from favorites', () => {
     component.ngOnInit();
-    component.removeFromFavorites('test-id-1');
+    component.removeFromFavorites(mockFavoriteJokes[0]);
 
     expect(jokeServiceSpy.removeFromFavorites).toHaveBeenCalledWith('test-id-1');
     expect(component.favoriteJokes()).toEqual([mockFavoriteJokes[1]]);
