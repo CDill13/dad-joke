@@ -17,12 +17,12 @@ describe('FavoritesPageComponent', () => {
   ];
 
   beforeEach(() => {
-    // Create a spy for JokeService using jasmine-auto-spies
     jokeServiceSpy = createSpyFromClass(JokeService);
 
-    // Set the return values for the spy methods
     jokeServiceSpy.getFavorites.and.returnValue(mockFavoriteJokes);
-    jokeServiceSpy.removeFromFavorites.and.returnValue(mockFavoriteJokes.slice(1));
+    jokeServiceSpy.removeFromFavorites.and.returnValue(
+      mockFavoriteJokes.slice(1)
+    );
 
     TestBed.configureTestingModule({
       imports: [FavoritesPageComponent],
@@ -48,7 +48,9 @@ describe('FavoritesPageComponent', () => {
     component.ngOnInit();
     component.removeFromFavorites(mockFavoriteJokes[0]);
 
-    expect(jokeServiceSpy.removeFromFavorites).toHaveBeenCalledWith(mockFavoriteJokes[0]);
+    expect(jokeServiceSpy.removeFromFavorites).toHaveBeenCalledWith(
+      mockFavoriteJokes[0]
+    );
     expect(component.favoriteJokes()).toEqual([mockFavoriteJokes[1]]);
   });
 });
