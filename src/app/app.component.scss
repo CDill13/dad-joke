@@ -4,10 +4,11 @@
   height: auto;
   display: flex;
   flex-direction: column;
-}
-.content {
-  max-width: 58em;
-  margin: 0 auto auto auto;
-  min-height: 100%;
-  height: max-content;
+
+  .content {
+    max-width: 58em;
+    margin: 0 auto auto auto;
+    min-height: 100%;
+    height: max-content;
+  }
 }
