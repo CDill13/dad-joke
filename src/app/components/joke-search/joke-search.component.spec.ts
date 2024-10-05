@@ -1,23 +1,76 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 
+import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
+import { of } from 'rxjs';
+
+import { JokeService } from '../../services/joke.service';
 import { JokeSearchComponent } from './joke-search.component';
+import { IJoke } from '../utils/jokes.types';
 
 describe('JokeSearchComponent', () => {
   let component: JokeSearchComponent;
   let fixture: ComponentFixture<JokeSearchComponent>;
+  let jokeServiceSpy: Spy<JokeService>;
+  let formBuilder: FormBuilder;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [JokeSearchComponent]
-    })
-    .compileComponents();
+  const mockJokes: IJoke[] = [
+    { id: 'test-id-1', joke: 'Test joke 1' },
+    { id: 'test-id-2', joke: 'Test joke 2' },
+  ];
+
+  beforeEach(() => {
+    jokeServiceSpy = createSpyFromClass(JokeService);
+    formBuilder = new FormBuilder();
+
+    TestBed.configureTestingModule({
+      imports: [JokeSearchComponent, ReactiveFormsModule],
+      providers: [
+        { provide: JokeService, useValue: jokeServiceSpy },
+        { provide: FormBuilder, useValue: formBuilder },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(JokeSearchComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should initialize the form on ngOnInit', () => {
+    component.ngOnInit();
+    expect(component.jokeSearchForm instanceof UntypedFormGroup).toBeTrue();
+    expect(component.jokeSearchForm?.value.searchTerm).toBe('');
+  });
+
+  it('should alert and not search when searchTerm is empty', () => {
+    spyOn(window, 'alert');
+    component.jokeSearchForm = formBuilder.group({ searchTerm: [''] });
+
+    component.searchJokes();
+
+    expect(window.alert).toHaveBeenCalledWith("C'mon now, Champ, you gotta tell me what you want to chuckle at!");
+    expect(jokeServiceSpy.getJokesBySearch).not.toHaveBeenCalled();
+  });
+
+  it('should search for jokes when searchTerm is provided', () => {
+    jokeServiceSpy.getJokesBySearch.and.returnValue(of(mockJokes));
+    component.jokeSearchForm = formBuilder.group({ searchTerm: ['funny'] });
+
+    component.searchJokes();
+
+    expect(jokeServiceSpy.getJokesBySearch).toHaveBeenCalledWith('funny');
+    expect(component.searchedJokes()).toEqual(mockJokes);
+  });
+
+  it('should save a joke to favorites and show an alert', () => {
+    spyOn(window, 'alert');
+
+    component.saveToFavorites(mockJokes[0]);
+
+    expect(jokeServiceSpy.saveToFavorites).toHaveBeenCalledWith(mockJokes[0]);
+    expect(window.alert).toHaveBeenCalledWith('Since you like it so much you can read it in your favorites any time you like, sport!');
   });
 });

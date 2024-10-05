@@ -11,10 +11,12 @@ import {
   UntypedFormGroup,
   FormBuilder,
 } from '@angular/forms';
+
 import { take } from 'rxjs';
+
 import { JokeService } from '../../services/joke.service';
-import { IJoke } from '../utils/jokes.types';
 import { JokeComponent } from '../joke/joke.component';
+import { IJoke } from '../utils/jokes.types';
 
 @Component({
   selector: 'app-joke-search',
@@ -25,21 +27,22 @@ import { JokeComponent } from '../joke/joke.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JokeSearchComponent implements OnInit {
-  searchedJokes = signal<IJoke[]>([]);
-  jokeSearchForm: UntypedFormGroup | any;
+  public searchedJokes = signal<IJoke[]>([]);
+  public jokeSearchForm: UntypedFormGroup | any;
 
   constructor(
     private formBuilder: FormBuilder,
     private jokeService: JokeService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.jokeSearchForm = this.formBuilder.group({ searchTerm: [''] });
   }
 
-  searchJokes(): void {
+  public searchJokes(): void {
     if (this.jokeSearchForm?.value.searchTerm.length < 1) {
       alert("C'mon now, Champ, you gotta tell me what you want to chuckle at!");
+
       return;
     } else {
       this.jokeService
@@ -50,9 +53,9 @@ export class JokeSearchComponent implements OnInit {
         });
     }
   }
-  saveToFavorites(id: any, joke: any) {
-    const newJoke: IJoke = { id, joke };
-    this.jokeService.saveToFavorites(newJoke);
+
+  public saveToFavorites(joke: IJoke) {
+    this.jokeService.saveToFavorites(joke);
     alert(
       'Since you like it so much you can read it in your favorites any time you like, sport!'
     );

@@ -1,38 +1,46 @@
 .search-cont {
   text-align: center;
+
+  h2 {
+    margin-bottom: 0.75em;
+  }
+
+  .joke-item {
+    padding: 0.5em 0.75em;
+    margin: 0.5em auto;
+    border-radius: 0.75em;
+
+    &:nth-child(odd) {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  button,
+  input {
+    font-size: 2em;
+    padding: 0.5em 0.75em;
+    margin-left: 1em;
+    border-radius: 0.5em;
+
+  }
+
+  button {
+    &:hover {
+      background-color: darkolivegreen;
+      color: white;
+      cursor: pointer;
+    }
+    &:active {
+      background-color: darkgreen;
+      border-color: white;
+      color: white;
+    }
+  }
 }
 
-h2 {
-  margin-bottom: 0.75em;
-}
 
-.joke-item {
-  padding: 0.5em 0.75em;
-  margin: 0.5em auto;
-  border-radius: 0.75em;
-}
 
-.joke-item:nth-child(odd) {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.joke-item:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-button,
-input {
-  font-size: 2em;
-  padding: 0.5em 0.75em;
-  margin-left: 1em;
-  border-radius: 0.5em;
-}
-button:hover {
-  background-color: darkolivegreen;
-  color: white;
-  cursor: pointer;
-}
-button:active {
-  background-color: darkgreen;
-  border-color: white;
-  color: white;
-}
