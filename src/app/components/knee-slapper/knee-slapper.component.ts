@@ -2,23 +2,29 @@ import {
   ChangeDetectionStrategy,
   Component,
   input,
+  signal,
 } from '@angular/core';
+
+import { isNil } from 'lodash';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { JokeService } from '../../services/joke.service';
 import { JokeComponent } from '../joke/joke.component';
 import { IJoke } from '../utils/jokes.types';
-import { isNil } from 'lodash';
 
 @Component({
   selector: 'app-knee-slapper',
   standalone: true,
-  imports: [JokeComponent],
+  imports: [JokeComponent, FontAwesomeModule],
   templateUrl: './knee-slapper.component.html',
   styleUrl: './knee-slapper.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KneeSlapperComponent {
   public joke = input<IJoke | undefined>(undefined)
+  public faHeart = signal(faHeart);
 
   constructor(private jokeService: JokeService) {}
 
