@@ -1,22 +1,25 @@
 .gen-joke-cont {
   min-height: 200px;
   text-align: center;
+
+  button {
+    margin: 16px;
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+
+    &:hover {
+      background-color: darkolivegreen;
+      color: white;
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: darkgreen;
+      border-color: white;
+      color: white;
+    }
+  }
 }
 
-button {
-  margin: 16px;
-  font-size: 24px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-}
-button:hover {
-  background-color: darkolivegreen;
-  color: white;
-  cursor: pointer;
-}
-button:active {
-  background-color: darkgreen;
-  border-color: white;
-  color: white;
-}

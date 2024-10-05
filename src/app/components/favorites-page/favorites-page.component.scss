@@ -16,6 +16,7 @@
   &:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.1);
   }
+
   &:nth-child(odd) {
     background-color: rgba(0, 0, 0, 0.05);
   }
@@ -31,6 +32,7 @@
       color: white;
       cursor: pointer;
     }
+
     &:active {
       background-color: darkgreen;
       border-color: white;

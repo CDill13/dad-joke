@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { JokeService } from '../../services/joke.service';
-import { UntypedFormGroup } from '@angular/forms';
-import { signal } from '@angular/core';
-import { IJoke } from '../utils/jokes.types';
-import { JokeComponent } from '../joke/joke.component';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgIf } from '@angular/common';
+import { UntypedFormGroup } from '@angular/forms';
+
+import { isNil } from 'lodash-es';
+
+import { JokeService } from '../../services/joke.service';
+import { JokeComponent } from '../joke/joke.component';
+import { IJoke } from '../utils/jokes.types';
 
 @Component({
   selector: 'app-generate-joke',
@@ -15,25 +17,25 @@ import { NgIf } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GenerateJokesComponent {
-  jokeText = signal('');
-  jokeId = signal('');
+  public joke = signal<IJoke | undefined>(undefined);
 
-  searchedJokes = signal<IJoke[]>([]);
-  jokeSearchForm: UntypedFormGroup | any;
+  public searchedJokes = signal<IJoke[]>([]);
+  public jokeSearchForm: UntypedFormGroup | any;
 
   constructor(private jokeService: JokeService) {}
 
-  getJoke(): void {
-    console.log(this.jokeText());
-    this.jokeService.getRandomJoke().subscribe((joke: IJoke) => {
-      this.jokeText.set(joke.joke);
-      this.jokeId.set(joke.id);
-    });
+  public getJoke(): void {
+    this.jokeService.getRandomJoke().subscribe((joke: IJoke) =>
+      this.joke.set(joke)
+    );
   }
 
-  saveToFavorites() {
-    const newJoke: IJoke = { id: this.jokeId(), joke: this.jokeText() };
-    this.jokeService.saveToFavorites(newJoke);
+  public saveToFavorites() {
+    if (isNil(this.joke())) {
+      return;
+    }
+
+    this.jokeService.saveToFavorites(this.joke() as IJoke);
     alert(
       'Since you like it so much you can read it in your favorites any time you like, sport!'
     );
