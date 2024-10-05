@@ -1,22 +1,22 @@
 <div class="footer-cont">
   <p>
     This site was made by&nbsp;
-    <a href="https://www.linkedin.com/in/cody-dillman/" target="_blank"
+    <a [href]="codyLinkedIn()" target="_blank"
       >Cody Dillman</a
     >
   </p>
   <p>
     Find me on LinkedIn
-    <a href="https://www.linkedin.com/in/cody-dillman/" target="_blank">
+    <a [href]="codyLinkedIn()" target="_blank">
       <img
-        src="https://i.pinimg.com/originals/86/32/54/863254f8c36146219554977cc345d584.png"
+        [src]="linkedInImage()"
       />
     </a>
   </p>
   <p>
     Find me on Github
-    <a href="https://github.com/CDill13" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" />
+    <a [href]="codyGitHub()" target="_blank">
+      <img [src]="gitHubImage()" />
     </a>
   </p>
 </div>
