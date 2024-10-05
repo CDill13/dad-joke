@@ -5,6 +5,6 @@
   }
   <app-joke [joke]="joke()"></app-joke>
   @if (joke() !== undefined) {
-  <button (click)="saveToFavorites()">That's a knee slapper!</button>
+  <app-knee-slapper [joke]="joke()"></app-knee-slapper>
   }
 </div>

@@ -24,7 +24,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/styles.scss", "node_modules/font-awesome/css/font-awesome.css", "./node_modules/font-awesome/css/font-awesome.css"],
             "scripts": []
           },
           "configurations": {

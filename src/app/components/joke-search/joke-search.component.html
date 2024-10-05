@@ -12,7 +12,7 @@
   @for(joke of searchedJokes(); track joke.id) {
   <div class="joke-item">
     <app-joke [joke]="joke"></app-joke>
-    <button (click)="saveToFavorites(joke)">That's a knee slapper!</button>
+    <app-knee-slapper [joke]="joke"></app-knee-slapper>
   </div>
   }
 </div>

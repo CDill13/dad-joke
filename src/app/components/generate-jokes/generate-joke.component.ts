@@ -8,11 +8,12 @@ import { isNil } from 'lodash-es';
 import { JokeService } from '../../services/joke.service';
 import { JokeComponent } from '../joke/joke.component';
 import { IJoke } from '../utils/jokes.types';
+import { KneeSlapperComponent } from '../knee-slapper/knee-slapper.component';
 
 @Component({
   selector: 'app-generate-joke',
   standalone: true,
-  imports: [JokeComponent, NgIf],
+  imports: [JokeComponent, KneeSlapperComponent],
   templateUrl: './generate-joke.component.html',
   styleUrl: './generate-joke.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
