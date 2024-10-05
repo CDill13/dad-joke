@@ -5,9 +5,10 @@
 
   h2 {
     margin: 1.875em 0.625em 0.625em 0.625em;
-  }
-  h2:hover {
-    cursor: pointer;
-    color: blue;
+
+    &:hover {
+      cursor: pointer;
+      color: blue;
+    }
   }
 }
