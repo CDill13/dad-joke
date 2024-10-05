@@ -2,7 +2,7 @@
 <h2 class="sub-title">Get it? Cuz they got your goat?</h2>
 
 @for (joke of favoriteJokes(); track joke.id) {
-  <div class="joke-cont" *ngFor="let joke of favoriteJokes()">
+  <div class="joke-cont">
     <app-joke [jokeText]="joke.joke" [jokeId]="joke.id"></app-joke>
     <button (click)="removeFromFavorites(joke.id)">Dad, it's getting old</button>
   </div>
