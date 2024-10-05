@@ -6,8 +6,20 @@
   flex-direction: column;
 
   .content {
-    max-width: 58em;
+    position: fixed;
+    min-width: 76em;
     margin: 0 auto 0 auto;
-    min-height: calc(100vh - 16em);
+    top: 11.25em;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, 0);
+    min-height: calc(100vh - 4.75em);
+    height: 100%;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

@@ -1,7 +1,7 @@
 .joke-page-container {
-  min-height: calc(100vh - 16em);
-  height: 100%;
-  padding: 0 1em;
+  // min-height: calc(100vh - 20em);
+  height: calc(100% - 2em);
+  padding: 1em;
   text-align: center;
 
   .color-mask {
