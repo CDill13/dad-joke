@@ -40,28 +40,4 @@ describe('GenerateJokesComponent', () => {
       expect(component.joke()).toEqual(mockJoke);
     });
   });
-
-  describe('saveToFavorites', () => {
-    it('should not save to favorites if joke is undefined', () => {
-      spyOn(window, 'alert');
-      component.joke.set(undefined);
-
-      component.saveToFavorites();
-
-      expect(jokeServiceSpy.saveToFavorites).not.toHaveBeenCalled();
-      expect(window.alert).not.toHaveBeenCalled();
-    });
-
-    it('should save the joke to favorites and show an alert when joke is defined', () => {
-      spyOn(window, 'alert');
-      component.joke.set(mockJoke);
-
-      component.saveToFavorites();
-
-      expect(jokeServiceSpy.saveToFavorites).toHaveBeenCalledWith(mockJoke);
-      expect(window.alert).toHaveBeenCalledWith(
-        'Since you like it so much you can read it in your favorites any time you like, sport!'
-      );
-    });
-  });
 });

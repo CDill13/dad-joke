@@ -32,17 +32,6 @@ export class JokePageComponent implements OnInit {
     });
   }
 
-  public saveToFavorites() {
-    if (isNil(this.joke())) {
-      return;
-    }
-
-    this.jokeService.saveToFavorites(this.joke() as IJoke);
-    alert(
-      'Since you like it so much you can read it in your favorites any time you like, sport!'
-    );
-  }
-
   private stringToColor(jokeId: string): string {
     let hash = 0;
 

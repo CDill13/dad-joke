@@ -73,15 +73,4 @@ describe('JokeSearchComponent', () => {
     expect(jokeServiceSpy.getJokesBySearch).toHaveBeenCalledWith('funny');
     expect(component.searchedJokes()).toEqual(mockJokes);
   });
-
-  it('should save a joke to favorites and show an alert', () => {
-    spyOn(window, 'alert');
-
-    component.saveToFavorites(mockJokes[0]);
-
-    expect(jokeServiceSpy.saveToFavorites).toHaveBeenCalledWith(mockJokes[0]);
-    expect(window.alert).toHaveBeenCalledWith(
-      'Since you like it so much you can read it in your favorites any time you like, sport!'
-    );
-  });
 });

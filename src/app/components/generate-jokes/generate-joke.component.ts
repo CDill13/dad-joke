@@ -41,15 +41,4 @@ export class GenerateJokesComponent implements OnInit {
       .pipe(take(1))
       .subscribe((joke: IJoke) => this.joke.set(joke));
   }
-
-  public saveToFavorites() {
-    if (isNil(this.joke())) {
-      return;
-    }
-
-    this.jokeService.saveToFavorites(this.joke() as IJoke);
-    alert(
-      'Since you like it so much you can read it in your favorites any time you like, sport!'
-    );
-  }
 }
