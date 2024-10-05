@@ -2,10 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   input,
-  Input,
-  OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { isNil } from 'lodash-es';
+
 import { IJoke } from '../utils/jokes.types';
 
 @Component({
@@ -17,14 +18,15 @@ import { IJoke } from '../utils/jokes.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JokeComponent {
-  public joke = input<IJoke>();
+  public joke = input<IJoke | undefined>(undefined);
 
   constructor(private router: Router) {}
 
-  @Input() jokeText!: string;
-  @Input() jokeId!: string;
+  public goToJokePage() {
+    if (isNil(this.joke())) {
+      return;
+    }
 
-  goToJokePage() {
-    this.router.navigate(['/joke-page', this.jokeId]);
+    this.router.navigate(['/joke-page', this.joke()?.id]);
   }
 }
