@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { UntypedFormGroup } from '@angular/forms';
 
+import { take } from 'rxjs';
 import { isNil } from 'lodash-es';
 
 import { JokeService } from '../../services/joke.service';
@@ -25,7 +26,7 @@ export class GenerateJokesComponent {
   constructor(private jokeService: JokeService) {}
 
   public getJoke(): void {
-    this.jokeService.getRandomJoke().subscribe((joke: IJoke) =>
+    this.jokeService.getRandomJoke().pipe(take(1)).subscribe((joke: IJoke) =>
       this.joke.set(joke)
     );
   }

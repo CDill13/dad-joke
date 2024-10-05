@@ -1,23 +1,79 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from "@angular/router";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { JokePageComponent } from './joke-page.component';
+import { createSpyFromClass, Spy } from "jasmine-auto-spies";
+import { of } from "rxjs";
+
+import { JokeService } from "../../services/joke.service";
+import { JokePageComponent } from "./joke-page.component";
+import { IJoke } from "../utils/jokes.types";
 
 describe('JokePageComponent', () => {
   let component: JokePageComponent;
   let fixture: ComponentFixture<JokePageComponent>;
+  let jokeServiceSpy: Spy<JokeService>;
+  let activatedRouteStub: any;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [JokePageComponent]
-    })
-    .compileComponents();
+  const mockJoke: IJoke = { id: 'test-id-1', joke: 'Test joke' };
+
+  beforeEach(() => {
+    jokeServiceSpy = createSpyFromClass(JokeService, {methodsToSpyOn: [
+      'getJokeById',
+      'saveToFavorites'
+    ]});
+    jokeServiceSpy.getJokeById.and.returnValue(of(mockJoke));
+
+    activatedRouteStub = { params: of({ jokeId: 'test-id-1' }) };
+
+    TestBed.configureTestingModule({
+      imports: [JokePageComponent],
+      providers: [
+        { provide: JokeService, useValue: jokeServiceSpy },
+        { provide: ActivatedRoute, useValue: activatedRouteStub },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(JokePageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set the background color based on the jokeId', () => {
+    component.ngOnInit();
+    expect(component.backgroundColor).toBe('rgb(24,48,72)');
+  });
+
+  it('should fetch the joke by id on init', () => {
+    jokeServiceSpy.getJokeById.and.returnValue(of(mockJoke));
+
+    component.ngOnInit();
+
+    expect(jokeServiceSpy.getJokeById).toHaveBeenCalledWith('test-id-1');
+    expect(component.joke()).toEqual(mockJoke);
+  });
+
+  it('should not save to favorites if joke is undefined', () => {
+    spyOn(window, 'alert');
+    component.joke.set(undefined);
+
+    component.saveToFavorites();
+
+    expect(jokeServiceSpy.saveToFavorites).not.toHaveBeenCalled();
+    expect(window.alert).not.toHaveBeenCalled();
+  });
+
+  it('should save the joke to favorites and show an alert when joke is defined', () => {
+    spyOn(window, 'alert');
+    component.joke.set(mockJoke);
+
+    component.saveToFavorites();
+
+    expect(jokeServiceSpy.saveToFavorites).toHaveBeenCalledWith(mockJoke);
+    expect(window.alert).toHaveBeenCalledWith(
+      'Since you like it so much you can read it in your favorites any time you like, sport!'
+    );
   });
 });
