@@ -14,8 +14,8 @@ describe('HomeComponent', () => {
       declarations: [
         HomeComponent,
         MockComponent(GenerateJokesComponent),
-        MockComponent(JokeSearchComponent)
-      ]
+        MockComponent(JokeSearchComponent),
+      ],
     });
 
     fixture = TestBed.createComponent(HomeComponent);

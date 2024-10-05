@@ -13,17 +13,13 @@ describe('HeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HeaderComponent,
-        MockComponent(NavComponent),
-        RouterLink
-      ],
+      imports: [HeaderComponent, MockComponent(NavComponent), RouterLink],
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: { params: of({}) }
-        }
-      ]
+          useValue: { params: of({}) },
+        },
+      ],
     });
 
     fixture = TestBed.createComponent(HeaderComponent);

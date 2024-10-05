@@ -20,9 +20,7 @@ describe('KneeSlapperComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [KneeSlapperComponent, ReactiveFormsModule],
-      providers: [
-        { provide: JokeService, useValue: jokeServiceSpy }
-      ],
+      providers: [{ provide: JokeService, useValue: jokeServiceSpy }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(KneeSlapperComponent);
@@ -54,6 +52,8 @@ describe('KneeSlapperComponent', () => {
     component.saveToFavorites();
 
     expect(jokeServiceSpy.saveToFavorites).toHaveBeenCalledWith(mockJoke);
-    expect(window.alert).toHaveBeenCalledWith('Since you like it so much you can read it in your favorites any time you like, sport!');
+    expect(window.alert).toHaveBeenCalledWith(
+      'Since you like it so much you can read it in your favorites any time you like, sport!'
+    );
   });
 });

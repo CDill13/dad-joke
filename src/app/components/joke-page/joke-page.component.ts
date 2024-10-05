@@ -6,11 +6,12 @@ import { take } from 'rxjs';
 import { JokeService } from '../../services/joke.service';
 import { IJoke } from '../utils/jokes.types';
 import { isNil } from 'lodash';
+import { KneeSlapperComponent } from '../knee-slapper/knee-slapper.component';
 
 @Component({
   selector: 'app-joke-page',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, KneeSlapperComponent],
   templateUrl: './joke-page.component.html',
   styleUrl: './joke-page.component.scss',
 })
@@ -57,8 +58,11 @@ export class JokePageComponent implements OnInit {
   }
 
   private getJokeById(jokeId: string): void {
-    this.jokeService.getJokeById(jokeId).pipe(take(1)).subscribe((joke: IJoke) => {
-      this.joke.set(joke);
-    });
+    this.jokeService
+      .getJokeById(jokeId)
+      .pipe(take(1))
+      .subscribe((joke: IJoke) => {
+        this.joke.set(joke);
+      });
   }
 }

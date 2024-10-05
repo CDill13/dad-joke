@@ -26,9 +26,7 @@ export class JokeService {
       .get<ISearchResponse>(`${JOKE_BASE_URL}/search?term=${searchTerm}`, {
         headers: this.jsonHeaders,
       })
-      .pipe(
-        map((result: ISearchResponse) => result.results)
-      );
+      .pipe(map((result: ISearchResponse) => result.results));
   }
 
   public getJokeById(id: string): Observable<IJoke> {

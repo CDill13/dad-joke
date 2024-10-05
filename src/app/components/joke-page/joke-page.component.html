@@ -3,5 +3,5 @@
     <h2>Heckin good one ain't it?</h2>
     <h1>{{ joke()?.joke }}</h1>
   </div>
-  <button (click)="saveToFavorites()">I like this one!</button>
+  <app-knee-slapper [joke]="joke()"></app-knee-slapper>
 </div>

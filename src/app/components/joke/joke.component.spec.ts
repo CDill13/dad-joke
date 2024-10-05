@@ -32,7 +32,10 @@ describe('JokeComponent', () => {
   it('should navigate to the joke page with the joke id', () => {
     fixture.componentRef.setInput('joke', mockJoke);
     component.goToJokePage();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/joke-page', 'test-id-1']);
+    expect(routerSpy.navigate).toHaveBeenCalledWith([
+      '/joke-page',
+      'test-id-1',
+    ]);
   });
 
   it('should not navigate if the joke is undefined', () => {

@@ -12,9 +12,9 @@
   </form>
 
   @for(joke of searchedJokes(); track joke.id) {
-    <div class="joke-item">
-      <app-joke [joke]="joke"></app-joke>
-      <app-knee-slapper [joke]="joke"></app-knee-slapper>
-    </div>
+  <div class="joke-item">
+    <app-joke [joke]="joke"></app-joke>
+    <app-knee-slapper [joke]="joke"></app-knee-slapper>
+  </div>
   }
 </div>

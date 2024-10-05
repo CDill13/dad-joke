@@ -10,9 +10,8 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterComponent]
-    })
-    .compileComponents();
+      imports: [FooterComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
@@ -24,7 +23,9 @@ describe('FooterComponent', () => {
   });
 
   it('should set signals correctly', () => {
-    expect(component.codyLinkedIn()).toEqual('https://www.linkedin.com/in/cody-dillman/');
+    expect(component.codyLinkedIn()).toEqual(
+      'https://www.linkedin.com/in/cody-dillman/'
+    );
     expect(component.codyGitHub()).toEqual('https://github.com/CDill13');
     expect(component.faGitHub()).toEqual(faGithub);
     expect(component.faLinkedin()).toEqual(faLinkedin);

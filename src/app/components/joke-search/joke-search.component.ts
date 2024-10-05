@@ -25,7 +25,13 @@ import { IJoke } from '../utils/jokes.types';
 @Component({
   selector: 'app-joke-search',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, JokeComponent, KneeSlapperComponent, FontAwesomeModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    JokeComponent,
+    KneeSlapperComponent,
+    FontAwesomeModule,
+  ],
   templateUrl: './joke-search.component.html',
   styleUrl: './joke-search.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

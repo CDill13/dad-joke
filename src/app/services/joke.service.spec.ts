@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import {
+  provideHttpClientTesting,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { JokeService } from './joke.service';
 import { IJoke, ISearchResponse } from '../components/utils/jokes.types';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
@@ -12,7 +15,7 @@ describe('JokeService', () => {
   const mockSearchResponse: ISearchResponse = {
     results: [mockJoke],
     total_jokes: 1,
-    current_page: 1
+    current_page: 1,
   } as ISearchResponse;
 
   beforeEach(() => {
@@ -40,7 +43,9 @@ describe('JokeService', () => {
       expect(jokes).toEqual([mockJoke]);
     });
 
-    const req = httpMock.expectOne(`https://icanhazdadjoke.com/search?term=${searchTerm}`);
+    const req = httpMock.expectOne(
+      `https://icanhazdadjoke.com/search?term=${searchTerm}`
+    );
     expect(req.request.method).toBe('GET');
     req.flush(mockSearchResponse);
   });
@@ -50,7 +55,9 @@ describe('JokeService', () => {
       expect(joke).toEqual(mockJoke);
     });
 
-    const req = httpMock.expectOne(`https://icanhazdadjoke.com/j/${mockJoke.id}`);
+    const req = httpMock.expectOne(
+      `https://icanhazdadjoke.com/j/${mockJoke.id}`
+    );
     expect(req.request.method).toBe('GET');
     req.flush(mockJoke);
   });
@@ -64,7 +71,10 @@ describe('JokeService', () => {
   it('should save a joke to favorites', () => {
     spyOn(localStorage, 'setItem');
     service.saveToFavorites(mockJoke);
-    expect(localStorage.setItem).toHaveBeenCalledWith('favorites', JSON.stringify([mockJoke]));
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'favorites',
+      JSON.stringify([mockJoke])
+    );
   });
 
   it('should remove a joke from favorites', () => {
@@ -73,7 +83,10 @@ describe('JokeService', () => {
 
     const updatedFavorites = service.removeFromFavorites(mockJoke);
 
-    expect(localStorage.setItem).toHaveBeenCalledWith('favorites', JSON.stringify([]));
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'favorites',
+      JSON.stringify([])
+    );
     expect(updatedFavorites).toEqual([]);
   });
 

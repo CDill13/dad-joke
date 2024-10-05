@@ -10,16 +10,13 @@ describe('NavComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        NavComponent,
-        RouterLink
-      ],
+      imports: [NavComponent, RouterLink],
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: { params: of({}) }
-        }
-      ]
+          useValue: { params: of({}) },
+        },
+      ],
     });
 
     fixture = TestBed.createComponent(NavComponent);

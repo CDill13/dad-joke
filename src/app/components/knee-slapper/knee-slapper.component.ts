@@ -23,7 +23,7 @@ import { IJoke } from '../utils/jokes.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KneeSlapperComponent {
-  public joke = input<IJoke | undefined>(undefined)
+  public joke = input<IJoke | undefined>(undefined);
   public faHeart = signal(faHeart);
 
   constructor(private jokeService: JokeService) {}

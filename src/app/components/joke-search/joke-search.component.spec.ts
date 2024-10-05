@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  UntypedFormGroup,
+} from '@angular/forms';
 
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -54,7 +58,9 @@ describe('JokeSearchComponent', () => {
 
     component.searchJokes();
 
-    expect(window.alert).toHaveBeenCalledWith("C'mon now, Champ, you gotta tell me what you want to chuckle at!");
+    expect(window.alert).toHaveBeenCalledWith(
+      "C'mon now, Champ, you gotta tell me what you want to chuckle at!"
+    );
     expect(jokeServiceSpy.getJokesBySearch).not.toHaveBeenCalled();
   });
 
@@ -74,6 +80,8 @@ describe('JokeSearchComponent', () => {
     component.saveToFavorites(mockJokes[0]);
 
     expect(jokeServiceSpy.saveToFavorites).toHaveBeenCalledWith(mockJokes[0]);
-    expect(window.alert).toHaveBeenCalledWith('Since you like it so much you can read it in your favorites any time you like, sport!');
+    expect(window.alert).toHaveBeenCalledWith(
+      'Since you like it so much you can read it in your favorites any time you like, sport!'
+    );
   });
 });
