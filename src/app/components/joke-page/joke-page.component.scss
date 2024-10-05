@@ -5,9 +5,27 @@
     text-align: center;
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 16px;
-    h1,
-    p {
+    padding: 8px 12px;
+    h2,
+    h1 {
       color: white;
     }
+  }
+  button {
+    margin: 16px auto;
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  button:hover {
+    background-color: darkolivegreen;
+    color: white;
+    cursor: pointer;
+  }
+  button:active {
+    background-color: darkgreen;
+    border-color: white;
+    color: white;
   }
 }

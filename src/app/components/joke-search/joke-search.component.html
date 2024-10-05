@@ -4,9 +4,10 @@
     <input type="text" formControlName="searchTerm" id="searchTerm" />
     <button class="button" type="submit">search</button>
   </form>
-  <app-joke
-    *ngFor="let joke of searchedJokes()"
-    [jokeText]="joke.joke"
-    [jokeId]="joke.id"
-  ></app-joke>
+  <div class="joke-item" *ngFor="let joke of searchedJokes()">
+    <app-joke [jokeText]="joke.joke" [jokeId]="joke.id"></app-joke>
+    <button (click)="saveToFavorites(joke.id, joke.joke)">
+      That's a knee slapper!
+    </button>
+  </div>
 </div>
