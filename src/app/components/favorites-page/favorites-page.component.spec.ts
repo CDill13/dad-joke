@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenerateJokesComponent } from './generate-jokes.component';
+import { FavoritesPageComponent } from './favorites-page.component';
 
-describe('GenerateJokesComponent', () => {
-  let component: GenerateJokesComponent;
-  let fixture: ComponentFixture<GenerateJokesComponent>;
+describe('FavoritesPageComponent', () => {
+  let component: FavoritesPageComponent;
+  let fixture: ComponentFixture<FavoritesPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GenerateJokesComponent]
+      imports: [FavoritesPageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GenerateJokesComponent);
+    fixture = TestBed.createComponent(FavoritesPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

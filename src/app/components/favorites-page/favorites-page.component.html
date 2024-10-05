@@ -1,0 +1,5 @@
+<h1>favorites-page!</h1>
+<div *ngFor="let joke of favoriteJokes()">
+  <app-joke [jokeText]="joke.joke" [jokeId]="joke.id"></app-joke>
+  <button (click)="removeFromFavorites(joke.id)">Dad, it's getting old</button>
+</div>

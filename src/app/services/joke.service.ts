@@ -8,24 +8,51 @@ import { ISearchResponse } from '../components/utils/jokes.types';
   providedIn: 'root',
 })
 export class JokeService {
-  private jokeAPI = 'https://icanhazdadjoke.com/';
+  private jokeBaseURL = 'https://icanhazdadjoke.com/';
   private http = inject(HttpClient);
+  private jsonHeaders = new HttpHeaders({ Accept: 'application/json' });
 
   public getRandomJoke(): Observable<IJoke> {
-    return this.http.get<IJoke>(this.jokeAPI, {
-      headers: new HttpHeaders({ Accept: 'application/json' }),
+    return this.http.get<IJoke>(this.jokeBaseURL, {
+      headers: this.jsonHeaders,
     });
   }
 
   public getJokesBySearch(searchTerm: string): Observable<IJoke[]> {
     return this.http
-      .get<ISearchResponse>(this.jokeAPI + '/search?term=' + searchTerm, {
-        headers: new HttpHeaders({ Accept: 'application/json' }),
+      .get<ISearchResponse>(this.jokeBaseURL + '/search?term=' + searchTerm, {
+        headers: this.jsonHeaders,
       })
       .pipe(
         map((result: ISearchResponse) => {
           return result.results;
         })
       );
+  }
+
+  public getJokeById(id: string): Observable<IJoke> {
+    return this.http.get<IJoke>(this.jokeBaseURL + '/j/' + id, {
+      headers: this.jsonHeaders,
+    });
+  }
+
+  public getFavorites() {
+    return JSON.parse(localStorage.getItem('favorites') || '[]');
+  }
+
+  public saveToFavorites(newJoke: IJoke) {
+    let savedJokes: IJoke[] = this.getFavorites().filter(
+      (joke: IJoke) => joke.id !== newJoke.id
+    );
+    savedJokes.push(newJoke);
+    return localStorage.setItem('favorites', JSON.stringify(savedJokes));
+  }
+
+  public removeFromFavorites(id: IJoke['id']) {
+    let savedJokes: IJoke[] = this.getFavorites().filter(
+      (joke: IJoke) => joke.id !== id
+    );
+    localStorage.setItem('favorites', JSON.stringify(savedJokes));
+    return this.getFavorites();
   }
 }

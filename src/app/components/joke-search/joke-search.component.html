@@ -1,13 +1,11 @@
-<h1>Get a random joke by clicking the button</h1>
-<button (click)="getJoke()">BUTTON</button>
-<div>{{ randomJoke }}</div>
-
 <form [formGroup]="jokeSearchForm" (ngSubmit)="searchJokes()">
   <h1>Search for jokes with a keyword or phrase</h1>
   <label for="searchTerm">search here</label>
   <input type="text" formControlName="searchTerm" id="searchTerm" />
   <button class="button" type="submit">search</button>
-  <ul>
-    <li *ngFor="let joke of searchedJokes()">{{ joke.joke }}</li>
-  </ul>
 </form>
+<app-joke
+  *ngFor="let joke of searchedJokes()"
+  [jokeText]="joke.joke"
+  [jokeId]="joke.id"
+></app-joke>

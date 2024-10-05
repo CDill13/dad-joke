@@ -1,8 +1,15 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HttpClient } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { JokePageComponent } from './components/joke-page/joke-page.component';
+import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
 
-export const routes: Routes = [{
-    path: '', redirectTo: '/dashboard', pathMatch: 'full'
-},
-{path: 'dashboard', component: DashboardComponent}];
+export const routes: Routes = [
+  { path: 'joke-page/:jokeId', component: JokePageComponent },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  { path: 'home', component: HomeComponent },
+  { path: 'favorites', component: FavoritesPageComponent },
+];
