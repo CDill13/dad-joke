@@ -28,6 +28,6 @@ export class FavoritesPageComponent implements OnInit {
   }
 
   public removeFromFavorites(joke: IJoke) {
-    this.favoriteJokes.set(this.jokeService.removeFromFavorites(joke.id));
+    this.favoriteJokes.set(this.jokeService.removeFromFavorites(joke));
   }
 }

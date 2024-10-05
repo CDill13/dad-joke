@@ -48,7 +48,7 @@ describe('FavoritesPageComponent', () => {
     component.ngOnInit();
     component.removeFromFavorites(mockFavoriteJokes[0]);
 
-    expect(jokeServiceSpy.removeFromFavorites).toHaveBeenCalledWith('test-id-1');
+    expect(jokeServiceSpy.removeFromFavorites).toHaveBeenCalledWith(mockFavoriteJokes[0]);
     expect(component.favoriteJokes()).toEqual([mockFavoriteJokes[1]]);
   });
 });
