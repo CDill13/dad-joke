@@ -1,11 +1,12 @@
-<form [formGroup]="jokeSearchForm" (ngSubmit)="searchJokes()">
-  <h1>Search for jokes with a keyword or phrase</h1>
-  <label for="searchTerm">search here</label>
-  <input type="text" formControlName="searchTerm" id="searchTerm" />
-  <button class="button" type="submit">search</button>
-</form>
-<app-joke
-  *ngFor="let joke of searchedJokes()"
-  [jokeText]="joke.joke"
-  [jokeId]="joke.id"
-></app-joke>
+<div class="search-cont">
+  <form [formGroup]="jokeSearchForm" (ngSubmit)="searchJokes()">
+    <h2>Search for jokes with a keyword or phrase</h2>
+    <input type="text" formControlName="searchTerm" id="searchTerm" />
+    <button class="button" type="submit">search</button>
+  </form>
+  <app-joke
+    *ngFor="let joke of searchedJokes()"
+    [jokeText]="joke.joke"
+    [jokeId]="joke.id"
+  ></app-joke>
+</div>

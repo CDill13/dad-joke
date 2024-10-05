@@ -1,0 +1,29 @@
+.title {
+  margin-top: 16px;
+  text-align: center;
+}
+.sub-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.joke-cont {
+  margin: 12px auto;
+}
+
+button {
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+button:hover {
+  background-color: darkolivegreen;
+  color: white;
+  cursor: pointer;
+}
+button:active {
+  background-color: darkgreen;
+  border-color: white;
+  color: white;
+}

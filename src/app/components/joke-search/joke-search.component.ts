@@ -38,11 +38,16 @@ export class JokeSearchComponent implements OnInit {
   }
 
   searchJokes(): void {
-    this.jokeService
-      .getJokesBySearch(this.jokeSearchForm?.value.searchTerm)
-      .pipe(take(1))
-      .subscribe((searchResponse) => {
-        this.searchedJokes.set(searchResponse);
-      });
+    if (this.jokeSearchForm?.value.searchTerm.length < 1) {
+      alert("C'mon now, Champ, you gotta tell me what you want to chuckle at!");
+      return;
+    } else {
+      this.jokeService
+        .getJokesBySearch(this.jokeSearchForm?.value.searchTerm)
+        .pipe(take(1))
+        .subscribe((searchResponse) => {
+          this.searchedJokes.set(searchResponse);
+        });
+    }
   }
 }

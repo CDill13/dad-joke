@@ -1,5 +1,7 @@
 <div class="gen-joke-cont">
-  <h1>Get a random joke by clicking the button</h1>
   <button (click)="getJoke()">PULL MY FINGER</button>
+  @if (jokeText() === '') {
+  <p>(if you dare)</p>
+  }
   <app-joke [jokeText]="jokeText()" [jokeId]="jokeId()"></app-joke>
 </div>

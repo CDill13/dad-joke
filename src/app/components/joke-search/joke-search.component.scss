@@ -1,0 +1,25 @@
+.search-cont {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 12px;
+}
+
+button,
+input {
+  font-size: 18px;
+  padding: 8px 12px;
+  margin-left: 16px;
+  border-radius: 8px;
+}
+button:hover {
+  background-color: darkolivegreen;
+  color: white;
+  cursor: pointer;
+}
+button:active {
+  background-color: darkgreen;
+  border-color: white;
+  color: white;
+}
