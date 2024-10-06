@@ -1,5 +1,17 @@
 <div class="nav-cont">
+  @if (!mobileSize) {
   <h2 [routerLink]="['/home']"><span>HOME</span></h2>
   <h2 [routerLink]="['/favorites']"><span>FAVORITES</span></h2>
   <h2 [routerLink]="['/search']"><span>SEARCH</span></h2>
+  } @else {
+  <h2 [routerLink]="['/home']">
+    <fa-icon [icon]="faHouse()"></fa-icon>
+  </h2>
+  <h2 [routerLink]="['/favorites']">
+    <fa-icon [icon]="faHeart()"></fa-icon>
+  </h2>
+  <h2 [routerLink]="['/search']">
+    <fa-icon [icon]="faMagnifyingGlass()"></fa-icon>
+  </h2>
+  }
 </div>

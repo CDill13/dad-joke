@@ -23,3 +23,27 @@
     }
   }
 }
+
+@media screen and (max-width: 48em) {
+  .main {
+    justify-content: space-between;
+    min-height: 100%;
+
+    > * {
+      display: block;
+      height: auto;
+    }
+
+    .content {
+      top: 7.5em;
+      min-height: calc(100vh + 6em);
+      padding: 0 1em;
+      min-width: unset;
+      max-width: 46em;
+      width: 100%;
+      left: unset;
+      right: unset;
+      transform: unset;
+    }
+  }
+}

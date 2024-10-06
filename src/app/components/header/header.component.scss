@@ -6,6 +6,7 @@
   align-items: center;
   position: fixed;
   text-align: center;
+  height: auto;
 
   img {
     cursor: pointer;
@@ -18,5 +19,21 @@
   }
   h1 {
     font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .header-cont {
+    img {
+      max-width: 8em;
+      margin: auto 0 auto 0.25em;
+      margin-bottom: auto;
+    }
+    span {
+      width: 8.25em;
+    }
+    h1 {
+      font-size: 2em;
+    }
   }
 }

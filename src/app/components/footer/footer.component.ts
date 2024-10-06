@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
@@ -9,10 +9,14 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
   public codyLinkedIn = signal('https://www.linkedin.com/in/cody-dillman/');
   public codyGitHub = signal('https://github.com/CDill13');
-
   public faGitHub = signal(faGithub);
   public faLinkedin = signal(faLinkedin);
+  public mobileSize = signal<boolean | undefined>(undefined);
+
+  ngOnInit(): void {
+    this.mobileSize.set(window.innerWidth < 769);
+  }
 }

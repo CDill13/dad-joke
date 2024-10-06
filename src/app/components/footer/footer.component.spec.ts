@@ -28,4 +28,15 @@ describe('FooterComponent', () => {
     expect(component.faGitHub()).toEqual(faGithub);
     expect(component.faLinkedin()).toEqual(faLinkedin);
   });
+
+  it('should detect viewport widths larger than mobile size correctly', () => {
+    const largeWindowInnerWidthSpy: jasmine.Spy = spyOnProperty(
+      window,
+      'innerWidth'
+    ).and.returnValue(770);
+
+    expect(component.mobileSize()).toBe(false);
+
+    largeWindowInnerWidthSpy.calls.reset();
+  });
 });
