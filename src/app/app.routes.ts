@@ -14,4 +14,5 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'favorites', component: FavoritesPageComponent },
   { path: 'search', component: JokeSearchComponent },
+  { path: '**', redirectTo: '/home' }
 ];
