@@ -4,9 +4,12 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
-
 import { JokeService } from './joke.service';
-import { IJoke, IPullMyFingerJoke, ISearchResponse } from '../components/utils/jokes.types';
+import {
+  IJoke,
+  IPullMyFingerJoke,
+  ISearchResponse,
+} from '../components/utils/jokes.types';
 
 describe('JokeService', () => {
   let service: JokeService;
@@ -107,7 +110,7 @@ describe('JokeService', () => {
 
       expect(jokes.size).toBeLessThanOrEqual(5);
     });
-  })
+  });
 
   afterEach(() => {
     httpMock.verify();

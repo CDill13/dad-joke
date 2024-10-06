@@ -1,9 +1,7 @@
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MockComponent } from 'ng-mocks';
 import { of } from 'rxjs';
-
 import { HeaderComponent } from './header.component';
 import { NavComponent } from '../nav/nav.component';
 
@@ -31,6 +29,8 @@ describe('HeaderComponent', () => {
   });
 
   it('should have correct image for dadJokeImg', () => {
-    expect(component.dadJokeImg()).toEqual('https://www.relativity.com/sites/relativity/cache/file/7D1131F6-208C-4423-B1A8FFADEF8AE53B.png');
-  })
+    expect(component.dadJokeImg()).toEqual(
+      'https://www.relativity.com/sites/relativity/cache/file/7D1131F6-208C-4423-B1A8FFADEF8AE53B.png'
+    );
+  });
 });

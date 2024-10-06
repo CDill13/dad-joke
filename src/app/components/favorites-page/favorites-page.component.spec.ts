@@ -1,7 +1,5 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
-
 import { JokeService } from '../../services/joke.service';
 import { FavoritesPageComponent } from './favorites-page.component';
 import { IJoke } from '../utils/jokes.types';

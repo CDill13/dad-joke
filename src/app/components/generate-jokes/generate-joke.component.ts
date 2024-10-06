@@ -5,15 +5,11 @@ import {
   signal,
 } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
-
 import { take } from 'rxjs';
-
 import { JokeService } from '../../services/joke.service';
 import { ToasterService } from '../../services/toaster.service';
-
 import { JokeComponent } from '../joke/joke.component';
 import { KneeSlapperComponent } from '../knee-slapper/knee-slapper.component';
-
 import { IJoke } from '../utils/jokes.types';
 
 @Component({
@@ -30,7 +26,10 @@ export class GenerateJokesComponent implements OnInit {
   public searchedJokes = signal<IJoke[]>([]);
   public jokeSearchForm: UntypedFormGroup | any;
 
-  constructor(private jokeService: JokeService, private toaster: ToasterService) {}
+  constructor(
+    private jokeService: JokeService,
+    private toaster: ToasterService
+  ) {}
 
   public ngOnInit(): void {
     this.getJoke(true);
@@ -39,9 +38,13 @@ export class GenerateJokesComponent implements OnInit {
   public getJoke(init?: boolean): void {
     if (!init) {
       const pullMyFingerJoke = this.jokeService.getPullMyFingerJoke();
-      this.toaster.warning(pullMyFingerJoke.punchline, pullMyFingerJoke.question, {
-        timeOut: 6000
-      });
+      this.toaster.warning(
+        pullMyFingerJoke.punchline,
+        pullMyFingerJoke.question,
+        {
+          timeOut: 6000,
+        }
+      );
     }
 
     this.jokeService

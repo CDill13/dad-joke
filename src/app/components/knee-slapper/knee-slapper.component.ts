@@ -3,20 +3,15 @@ import {
   Component,
   computed,
   input,
-  signal
+  signal,
 } from '@angular/core';
-
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { isNil } from 'lodash-es';
-
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { JokeService } from '../../services/joke.service';
 import { ToasterService } from '../../services/toaster.service';
-
 import { JokeComponent } from '../joke/joke.component';
-
 import { IJoke } from '../utils/jokes.types';
 
 @Component({
@@ -41,7 +36,10 @@ export class KneeSlapperComponent {
 
   private forceIsFavoriteUpdate = signal(0);
 
-  constructor(private jokeService: JokeService, private toaster: ToasterService){}
+  constructor(
+    private jokeService: JokeService,
+    private toaster: ToasterService
+  ) {}
 
   public saveToFavorites(): void {
     if (isNil(this.joke()) || this.isFavorite()) {
@@ -49,7 +47,7 @@ export class KneeSlapperComponent {
     }
 
     this.jokeService.saveToFavorites(this.joke() as IJoke);
-    this.forceIsFavoriteUpdate.update(value => value + 1);
+    this.forceIsFavoriteUpdate.update((value) => value + 1);
 
     this.toaster.success(
       'Since you like it so much you can read it in your favorites any time you like, sport!',

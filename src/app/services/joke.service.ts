@@ -1,7 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-
 import { IJoke, IPullMyFingerJoke } from '../components/utils/jokes.types';
 import { ISearchResponse } from '../components/utils/jokes.types';
 
@@ -9,25 +8,26 @@ const JOKE_BASE_URL = 'https://icanhazdadjoke.com';
 const PULL_MY_FINGER_JOKES: IPullMyFingerJoke[] = [
   {
     question: `Why shouldn’t you ever fart on an elevator?`,
-    punchline: `Because it’s wrong on so many levels!`
+    punchline: `Because it’s wrong on so many levels!`,
   },
   {
     question: 'What do you call someone who never farts in public?',
-    punchline: 'A private tutor!'
+    punchline: 'A private tutor!',
   },
   {
     question: 'Why do farts smell?',
-    punchline: 'So that deaf people can enjoy them too!'
+    punchline: 'So that deaf people can enjoy them too!',
   },
   {
     question: `What’s invisible and smells like carrots?`,
-    punchline: 'Bunny farts!'
+    punchline: 'Bunny farts!',
   },
   {
     question: 'Why did the kid bring a ladder to school?',
-    punchline: 'Because he wanted to go to high school and let out some high farts!'
-  }
-]
+    punchline:
+      'Because he wanted to go to high school and let out some high farts!',
+  },
+];
 
 @Injectable({
   providedIn: 'root',

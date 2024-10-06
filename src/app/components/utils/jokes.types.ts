@@ -16,6 +16,6 @@ export interface ISearchResponse {
 }
 
 export interface IPullMyFingerJoke {
-  question: string,
-  punchline: string
+  question: string;
+  punchline: string;
 }

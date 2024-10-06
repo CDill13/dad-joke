@@ -1,12 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-
 import { JokeService } from '../../services/joke.service';
 import { KneeSlapperComponent } from './knee-slapper.component';
-
 import { IJoke } from '../utils/jokes.types';
 
 describe('KneeSlapperComponent', () => {
@@ -16,7 +13,7 @@ describe('KneeSlapperComponent', () => {
 
   const mockJokes: IJoke[] = [
     { id: 'test-id-1', joke: 'Test joke 1' },
-    { id: 'test-id-2', joke: 'Test joke 2' }
+    { id: 'test-id-2', joke: 'Test joke 2' },
   ];
 
   beforeEach(() => {
@@ -49,7 +46,7 @@ describe('KneeSlapperComponent', () => {
       component['forceIsFavoriteUpdate']();
       expect(component.isFavorite()).toBeFalse();
     });
-  })
+  });
 
   it('should set faHeart correctly', () => {
     expect(component.faHeart()).toEqual(faHeart);

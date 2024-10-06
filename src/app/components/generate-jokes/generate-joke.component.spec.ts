@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { of } from 'rxjs';
-
 import { JokeService } from '../../services/joke.service';
 import { GenerateJokesComponent } from './generate-joke.component';
 import { IJoke } from '../utils/jokes.types';
@@ -19,8 +17,8 @@ describe('GenerateJokesComponent', () => {
     jokeServiceSpy.getRandomJoke.and.returnValue(of(mockJoke));
     jokeServiceSpy.getPullMyFingerJoke.and.returnValue({
       question: 'test-question',
-      punchline: 'test-punchline'}
-    );
+      punchline: 'test-punchline',
+    });
 
     TestBed.configureTestingModule({
       imports: [GenerateJokesComponent],

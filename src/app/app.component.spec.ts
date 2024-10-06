@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockComponent } from 'ng-mocks';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -11,7 +10,11 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [AppComponent, MockComponent(HeaderComponent), MockComponent(FooterComponent)],
+      imports: [
+        AppComponent,
+        MockComponent(HeaderComponent),
+        MockComponent(FooterComponent),
+      ],
     });
 
     fixture = TestBed.createComponent(AppComponent);
