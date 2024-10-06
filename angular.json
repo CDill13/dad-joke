@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/dad-joke",
+            "outputPath": "docs/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -24,7 +24,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss", "node_modules/toastr/build/toastr.min.css"],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/toastr/build/toastr.min.css"
+            ],
             "scripts": []
           },
           "configurations": {
