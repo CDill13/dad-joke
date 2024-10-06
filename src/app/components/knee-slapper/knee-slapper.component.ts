@@ -1,9 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   input,
-  OnInit,
-  signal,
+  signal
 } from '@angular/core';
 
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -27,21 +27,21 @@ import { IJoke } from '../utils/jokes.types';
   styleUrl: './knee-slapper.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KneeSlapperComponent implements OnInit {
+export class KneeSlapperComponent {
   public joke = input<IJoke | undefined>(undefined);
   public isLarge = input(false);
-  public isFavorite = signal(false);
+  public isFavorite = computed(() => {
+    this.forceIsFavoriteUpdate();
+    return this.jokeService
+      .getFavorites()
+      .some((savedJoke: IJoke) => savedJoke.id === this.joke()?.id);
+  });
+
   public faHeart = signal(faHeart);
 
-  constructor(private jokeService: JokeService, private toaster: ToasterService) {}
+  private forceIsFavoriteUpdate = signal(0);
 
-  public ngOnInit(): void {
-    this.isFavorite.set(
-      this.jokeService
-        .getFavorites()
-        .some((savedJoke: IJoke) => savedJoke.id === this.joke()?.id)
-    );
-  }
+  constructor(private jokeService: JokeService, private toaster: ToasterService){}
 
   public saveToFavorites(): void {
     if (isNil(this.joke()) || this.isFavorite()) {
@@ -49,7 +49,8 @@ export class KneeSlapperComponent implements OnInit {
     }
 
     this.jokeService.saveToFavorites(this.joke() as IJoke);
-    this.isFavorite.set(true);
+    this.forceIsFavoriteUpdate.update(value => value + 1);
+
     this.toaster.success(
       'Since you like it so much you can read it in your favorites any time you like, sport!',
       'Huzzah!'

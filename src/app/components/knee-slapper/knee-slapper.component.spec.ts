@@ -1,9 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+
 import { JokeService } from '../../services/joke.service';
 import { KneeSlapperComponent } from './knee-slapper.component';
+
 import { IJoke } from '../utils/jokes.types';
 
 describe('KneeSlapperComponent', () => {
@@ -37,13 +40,13 @@ describe('KneeSlapperComponent', () => {
   describe('isFavorite', () => {
     it('should be set to true when getFavorites returns the inputted joke', () => {
       jokeServiceSpy.getFavorites.and.returnValue(mockJokes);
-      component.ngOnInit();
+      component['forceIsFavoriteUpdate']();
       expect(component.isFavorite()).toBeTrue();
     });
 
     it('should be set to false when getFavorites does not return the inputted joke', () => {
       jokeServiceSpy.getFavorites.and.returnValue([mockJokes[1]]);
-      component.ngOnInit();
+      component['forceIsFavoriteUpdate']();
       expect(component.isFavorite()).toBeFalse();
     });
   })
@@ -53,26 +56,23 @@ describe('KneeSlapperComponent', () => {
   });
 
   it('should not save a joke to favorites if joke is undefined', () => {
-    component.isFavorite.set(false);
     fixture.componentRef.setInput('joke', undefined);
-
     component.saveToFavorites();
-
     expect(jokeServiceSpy.saveToFavorites).not.toHaveBeenCalled();
   });
 
   it('should not save a joke to favorites if isFavorite is set to true', () => {
-    component.isFavorite.set(true);
     component.saveToFavorites();
     expect(jokeServiceSpy.saveToFavorites).not.toHaveBeenCalled();
   });
 
-  it('should save a joke to favorites if joke is defined and isFavorite is set to false and set isFavorite to true', () => {
-    component.isFavorite.set(false);
+  it('should save a joke to favorites if joke is defined and isFavorite is set to false', () => {
+    jokeServiceSpy.getFavorites.and.returnValue([mockJokes[1]]);
+    fixture.componentRef.setInput('joke', mockJokes[0]);
+    component['forceIsFavoriteUpdate']();
+
     component.saveToFavorites();
 
     expect(jokeServiceSpy.saveToFavorites).toHaveBeenCalledWith(mockJokes[0]);
-
-    expect(component.isFavorite()).toBeTrue();
   });
 });

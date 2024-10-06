@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { ToasterService } from './toaster.service';
 import * as toastr from 'toastr';
 
-fdescribe('ToasterService', () => {
+describe('ToasterService', () => {
   let service: ToasterService;
 
   beforeEach(() => {
