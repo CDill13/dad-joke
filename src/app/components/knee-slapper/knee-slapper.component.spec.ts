@@ -36,24 +36,17 @@ describe('KneeSlapperComponent', () => {
     expect(component.faHeart()).toEqual(faHeart);
   });
 
-  it('should not save a joke to favorites and show an alert if joke is undefined', () => {
-    spyOn(window, 'alert');
+  it('should not save a joke to favorites if joke is undefined', () => {
     fixture.componentRef.setInput('joke', undefined);
 
     component.saveToFavorites();
 
     expect(jokeServiceSpy.saveToFavorites).not.toHaveBeenCalled();
-    expect(window.alert).not.toHaveBeenCalled();
   });
 
-  it('should save a joke to favorites and show an alert', () => {
-    spyOn(window, 'alert');
-
+  it('should save a joke to favorites if joke is defined', () => {
     component.saveToFavorites();
 
     expect(jokeServiceSpy.saveToFavorites).toHaveBeenCalledWith(mockJoke);
-    expect(window.alert).toHaveBeenCalledWith(
-      'Since you like it so much you can read it in your favorites any time you like, sport!'
-    );
   });
 });

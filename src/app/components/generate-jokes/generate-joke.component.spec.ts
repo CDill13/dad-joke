@@ -16,6 +16,11 @@ describe('GenerateJokesComponent', () => {
 
   beforeEach(() => {
     jokeServiceSpy = createSpyFromClass(JokeService);
+    jokeServiceSpy.getRandomJoke.and.returnValue(of(mockJoke));
+    jokeServiceSpy.getPullMyFingerJoke.and.returnValue({
+      question: 'test-question',
+      punchline: 'test-punchline'}
+    );
 
     TestBed.configureTestingModule({
       imports: [GenerateJokesComponent],
@@ -38,6 +43,16 @@ describe('GenerateJokesComponent', () => {
 
       expect(jokeServiceSpy.getRandomJoke).toHaveBeenCalled();
       expect(component.joke()).toEqual(mockJoke);
+    });
+
+    it('should call getPullMyFingerJoke if init is false', () => {
+      component.getJoke();
+      expect(jokeServiceSpy.getPullMyFingerJoke).toHaveBeenCalledWith();
+    });
+
+    it('should not call getPullMyFingerJoke if init is true', () => {
+      component.getJoke(true);
+      expect(jokeServiceSpy.getPullMyFingerJoke).not.toHaveBeenCalled();
     });
   });
 });

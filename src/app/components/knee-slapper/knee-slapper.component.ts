@@ -4,6 +4,7 @@ import {
   input,
   signal,
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { isNil } from 'lodash';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -14,10 +15,12 @@ import { JokeService } from '../../services/joke.service';
 import { JokeComponent } from '../joke/joke.component';
 import { IJoke } from '../utils/jokes.types';
 
+import * as toastr from 'toastr';
+
 @Component({
   selector: 'app-knee-slapper',
   standalone: true,
-  imports: [JokeComponent, FontAwesomeModule],
+  imports: [JokeComponent, FontAwesomeModule, CommonModule],
   templateUrl: './knee-slapper.component.html',
   styleUrl: './knee-slapper.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,8 +37,6 @@ export class KneeSlapperComponent {
     }
 
     this.jokeService.saveToFavorites(this.joke() as IJoke);
-    alert(
-      'Since you like it so much you can read it in your favorites any time you like, sport!'
-    );
+    toastr.success('Since you like it so much you can read it in your favorites any time you like, sport!', 'Huzzah!');
   }
 }

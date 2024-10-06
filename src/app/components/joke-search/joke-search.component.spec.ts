@@ -52,15 +52,9 @@ describe('JokeSearchComponent', () => {
     expect(component.faMagnifyingGlass()).toEqual(faMagnifyingGlass);
   });
 
-  it('should alert and not search when searchTerm is empty', () => {
-    spyOn(window, 'alert');
+  it('should not search when searchTerm is empty', () => {
     component.jokeSearchForm = formBuilder.group({ searchTerm: [''] });
-
     component.searchJokes();
-
-    expect(window.alert).toHaveBeenCalledWith(
-      "C'mon now, Champ, you gotta tell me what you want to chuckle at!"
-    );
     expect(jokeServiceSpy.getJokesBySearch).not.toHaveBeenCalled();
   });
 

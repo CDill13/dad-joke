@@ -14,3 +14,8 @@ export interface ISearchResponse {
   total_jokes: number;
   total_pages: number;
 }
+
+export interface IPullMyFingerJoke {
+  question: string,
+  punchline: string
+}

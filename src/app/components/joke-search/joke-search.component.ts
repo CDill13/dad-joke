@@ -22,6 +22,8 @@ import { KneeSlapperComponent } from '../knee-slapper/knee-slapper.component';
 
 import { IJoke } from '../utils/jokes.types';
 
+import * as toastr from 'toastr';
+
 @Component({
   selector: 'app-joke-search',
   standalone: true,
@@ -52,7 +54,7 @@ export class JokeSearchComponent implements OnInit {
 
   public searchJokes(): void {
     if (this.jokeSearchForm?.value.searchTerm.length < 1) {
-      alert("C'mon now, Champ, you gotta tell me what you want to chuckle at!");
+      toastr.warning("C'mon now, Champ, you gotta tell me what you want to chuckle at!", 'Uh oh!');
 
       return;
     } else {

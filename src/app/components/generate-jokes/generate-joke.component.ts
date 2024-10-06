@@ -15,6 +15,8 @@ import { KneeSlapperComponent } from '../knee-slapper/knee-slapper.component';
 
 import { IJoke } from '../utils/jokes.types';
 
+import * as toastr from 'toastr';
+
 @Component({
   selector: 'app-generate-joke',
   standalone: true,
@@ -32,10 +34,17 @@ export class GenerateJokesComponent implements OnInit {
   constructor(private jokeService: JokeService) {}
 
   public ngOnInit(): void {
-    this.getJoke();
+    this.getJoke(true);
   }
 
-  public getJoke(): void {
+  public getJoke(init?: boolean): void {
+    if (!init) {
+      const pullMyFingerJoke = this.jokeService.getPullMyFingerJoke();
+      toastr.warning(pullMyFingerJoke.punchline, pullMyFingerJoke.question, {
+        timeOut: 6000
+      });
+    }
+
     this.jokeService
       .getRandomJoke()
       .pipe(take(1))

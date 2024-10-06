@@ -4,8 +4,9 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { JokeService } from './joke.service';
-import { IJoke, ISearchResponse } from '../components/utils/jokes.types';
+import { IJoke, IPullMyFingerJoke, ISearchResponse } from '../components/utils/jokes.types';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { uniq } from 'lodash';
 
 describe('JokeService', () => {
   let service: JokeService;
@@ -89,6 +90,24 @@ describe('JokeService', () => {
     );
     expect(updatedFavorites).toEqual([]);
   });
+
+  describe('getPullMyFingerJoke', () => {
+    it('should return a joke', () => {
+      const joke: IPullMyFingerJoke = service.getPullMyFingerJoke();
+      expect(joke).toBeDefined();
+    });
+
+    it('should return a joke when called multiple times', () => {
+      const jokes = new Set<IPullMyFingerJoke>();
+
+      for (let i = 0; i < 10; i++) {
+        const joke: IPullMyFingerJoke = service.getPullMyFingerJoke();
+        jokes.add(joke);
+      }
+
+      expect(jokes.size).toBeLessThanOrEqual(5);
+    });
+  })
 
   afterEach(() => {
     httpMock.verify();
