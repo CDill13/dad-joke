@@ -56,23 +56,25 @@ export class JokeService {
     });
   }
 
-  public getFavorites() {
+  public getFavorites(): IJoke[] {
     return JSON.parse(localStorage.getItem('favorites') || '[]');
   }
 
-  public saveToFavorites(newJoke: IJoke) {
+  public saveToFavorites(newJoke: IJoke): void {
     let savedJokes: IJoke[] = this.getFavorites().filter(
       (joke: IJoke) => joke.id !== newJoke.id
     );
     savedJokes.push(newJoke);
+
     return localStorage.setItem('favorites', JSON.stringify(savedJokes));
   }
 
-  public removeFromFavorites(joke: IJoke) {
+  public removeFromFavorites(joke: IJoke): IJoke[] {
     let savedJokes: IJoke[] = this.getFavorites().filter(
       (savedJoke: IJoke) => savedJoke.id !== joke.id
     );
     localStorage.setItem('favorites', JSON.stringify(savedJokes));
+
     return this.getFavorites();
   }
 

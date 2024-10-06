@@ -40,7 +40,7 @@ export class KneeSlapperComponent implements OnInit {
     );
   }
 
-  public saveToFavorites() {
+  public saveToFavorites(): void {
     if (isNil(this.joke()) || this.isFavorite()) {
       return;
     }

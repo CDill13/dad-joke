@@ -16,7 +16,7 @@ export class JokeComponent {
 
   constructor(private router: Router) {}
 
-  public goToJokePage() {
+  public goToJokePage(): void {
     if (isNil(this.joke())) {
       return;
     }

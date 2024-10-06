@@ -27,7 +27,7 @@ export class FavoritesPageComponent implements OnInit {
     this.favoriteJokes.set(this.jokeService.getFavorites());
   }
 
-  public removeFromFavorites(joke: IJoke) {
+  public removeFromFavorites(joke: IJoke): void {
     toastr.error('When I said I wanted a break, I didn’t mean this kind of break.', 'Aw man');
     this.favoriteJokes.set(this.jokeService.removeFromFavorites(joke));
   }
