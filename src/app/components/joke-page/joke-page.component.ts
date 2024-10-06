@@ -1,11 +1,8 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-
 import { take } from 'rxjs';
-
 import { JokeService } from '../../services/joke.service';
 import { IJoke } from '../utils/jokes.types';
-import { isNil } from 'lodash';
 import { KneeSlapperComponent } from '../knee-slapper/knee-slapper.component';
 
 @Component({

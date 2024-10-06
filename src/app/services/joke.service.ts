@@ -1,8 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { map, Observable } from 'rxjs';
-
 import { IJoke } from '../components/utils/jokes.types';
 import { ISearchResponse } from '../components/utils/jokes.types';
 

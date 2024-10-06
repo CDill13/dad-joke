@@ -10,16 +10,12 @@ import {
   UntypedFormGroup,
   FormBuilder,
 } from '@angular/forms';
-
 import { take } from 'rxjs';
-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
 import { JokeService } from '../../services/joke.service';
 import { JokeComponent } from '../joke/joke.component';
 import { KneeSlapperComponent } from '../knee-slapper/knee-slapper.component';
-
 import { IJoke } from '../utils/jokes.types';
 
 @Component({

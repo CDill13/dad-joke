@@ -4,12 +4,9 @@ import {
   input,
   signal,
 } from '@angular/core';
-
 import { isNil } from 'lodash';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { JokeService } from '../../services/joke.service';
 import { JokeComponent } from '../joke/joke.component';
 import { IJoke } from '../utils/jokes.types';
