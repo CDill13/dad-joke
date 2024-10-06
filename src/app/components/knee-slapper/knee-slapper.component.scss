@@ -16,4 +16,9 @@ button {
     border-color: white;
     color: white;
   }
+
+  &.favorite {
+    background-color: darkgreen;
+    color: white;
+  }
 }

@@ -40,7 +40,7 @@ describe('JokePageComponent', () => {
 
   it('should set the background color based on the jokeId', () => {
     component.ngOnInit();
-    expect(component.backgroundColor).toBe('rgb(24,48,72)');
+    expect(component.backgroundColor()).toBe('rgb(24,48,72)');
   });
 
   it('should fetch the joke by id on init', () => {

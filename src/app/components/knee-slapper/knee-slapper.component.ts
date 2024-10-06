@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   input,
+  OnInit,
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,18 +24,29 @@ import * as toastr from 'toastr';
   styleUrl: './knee-slapper.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KneeSlapperComponent {
+export class KneeSlapperComponent implements OnInit {
   public joke = input<IJoke | undefined>(undefined);
+  public isFavorite = signal(false);
   public faHeart = signal(faHeart);
 
   constructor(private jokeService: JokeService) {}
 
+  public ngOnInit(): void {
+    this.isFavorite.set(
+      this.jokeService.getFavorites().some((savedJoke: IJoke) => savedJoke.id === this.joke()?.id)
+    );
+  }
+
   public saveToFavorites() {
-    if (isNil(this.joke())) {
+    if (isNil(this.joke()) || this.isFavorite()) {
       return;
     }
 
     this.jokeService.saveToFavorites(this.joke() as IJoke);
-    toastr.success('Since you like it so much you can read it in your favorites any time you like, sport!', 'Huzzah!');
+    this.isFavorite.set(true);
+    toastr.success(
+      'Since you like it so much you can read it in your favorites any time you like, sport!',
+      'Huzzah!'
+    );
   }
 }
