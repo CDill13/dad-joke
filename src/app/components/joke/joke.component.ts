@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { isNil } from 'lodash-es';
-
 import { IJoke } from '../utils/jokes.types';
 
 @Component({

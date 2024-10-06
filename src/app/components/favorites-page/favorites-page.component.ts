@@ -4,7 +4,6 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-
 import { JokeService } from '../../services/joke.service';
 import { JokeComponent } from '../joke/joke.component';
 import { IJoke } from '../utils/jokes.types';

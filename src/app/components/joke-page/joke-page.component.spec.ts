@@ -1,9 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { of } from 'rxjs';
-
 import { JokeService } from '../../services/joke.service';
 import { JokePageComponent } from './joke-page.component';
 import { IJoke } from '../utils/jokes.types';
