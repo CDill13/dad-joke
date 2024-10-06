@@ -5,16 +5,19 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
-import { isNil } from 'lodash-es';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { JokeService } from '../../services/joke.service';
-import { JokeComponent } from '../joke/joke.component';
-import { IJoke } from '../utils/jokes.types';
+import { isNil } from 'lodash-es';
 
-import * as toastr from 'toastr';
+import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { JokeService } from '../../services/joke.service';
+import { ToasterService } from '../../services/toaster.service';
+
+import { JokeComponent } from '../joke/joke.component';
+
+import { IJoke } from '../utils/jokes.types';
 
 @Component({
   selector: 'app-knee-slapper',
@@ -30,7 +33,7 @@ export class KneeSlapperComponent implements OnInit {
   public isFavorite = signal(false);
   public faHeart = signal(faHeart);
 
-  constructor(private jokeService: JokeService) {}
+  constructor(private jokeService: JokeService, private toaster: ToasterService) {}
 
   public ngOnInit(): void {
     this.isFavorite.set(
@@ -47,7 +50,7 @@ export class KneeSlapperComponent implements OnInit {
 
     this.jokeService.saveToFavorites(this.joke() as IJoke);
     this.isFavorite.set(true);
-    toastr.success(
+    this.toaster.success(
       'Since you like it so much you can read it in your favorites any time you like, sport!',
       'Huzzah!'
     );
