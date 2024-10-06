@@ -26,6 +26,7 @@ import * as toastr from 'toastr';
 })
 export class KneeSlapperComponent implements OnInit {
   public joke = input<IJoke | undefined>(undefined);
+  public isLarge = input(false);
   public isFavorite = signal(false);
   public faHeart = signal(faHeart);
 
@@ -33,7 +34,9 @@ export class KneeSlapperComponent implements OnInit {
 
   public ngOnInit(): void {
     this.isFavorite.set(
-      this.jokeService.getFavorites().some((savedJoke: IJoke) => savedJoke.id === this.joke()?.id)
+      this.jokeService
+        .getFavorites()
+        .some((savedJoke: IJoke) => savedJoke.id === this.joke()?.id)
     );
   }
 

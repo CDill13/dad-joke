@@ -3,33 +3,28 @@
   padding: 1em;
   text-align: center;
 
-  .color-mask {
-    background-color: rgba(0, 0, 0, 0.75);
-    border-radius: 1em;
-    padding: 0.5em 0.75em;
+  .stars {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-    h2,
-    h1 {
-      color: white;
+    .star-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+
+      .star {
+        max-height: 10em;
+      }
     }
   }
 
-  button {
-    margin: 1em auto;
-    font-size: 1em;
-    padding: 0.625em 1.25em;
-    border-radius: 0.5em;
-    font-weight: bold;
-
-    &:hover {
-      background-color: darkolivegreen;
-      color: white;
-      cursor: pointer;
-    }
-    &:active {
-      background-color: darkgreen;
-      border-color: white;
-      color: white;
-    }
+  h1 {
+    font-size: 3.5em;
+  }
+  h2 {
+    margin-top: 1em;
+    font-size: 2em;
   }
 }

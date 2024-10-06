@@ -21,4 +21,10 @@ button {
     background-color: darkgreen;
     color: white;
   }
+  &.large {
+    font-size: 2em;
+    padding: 1em 2em;
+    border-radius: 0.75em;
+    font-weight: bold;
+  }
 }

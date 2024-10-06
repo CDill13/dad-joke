@@ -1,4 +1,8 @@
-<button (click)="saveToFavorites()" [class.favorite]="isFavorite()">
+<button
+  (click)="saveToFavorites()"
+  [class.large]="isLarge"
+  [class.favorite]="isFavorite()"
+>
   <fa-icon [icon]="faHeart()"></fa-icon>
   That's a knee slapper!
 </button>

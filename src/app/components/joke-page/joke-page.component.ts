@@ -14,7 +14,7 @@ import { KneeSlapperComponent } from '../knee-slapper/knee-slapper.component';
 })
 export class JokePageComponent implements OnInit {
   public joke = signal<IJoke | undefined>(undefined);
-  public backgroundColor = signal('white');
+  public starColor = signal('white');
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +24,7 @@ export class JokePageComponent implements OnInit {
   public ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const jokeId = params['jokeId'];
-      this.backgroundColor.set(this.stringToColor(jokeId));
+      this.starColor.set(this.stringToColor(jokeId));
       this.getJokeById(jokeId);
     });
   }
