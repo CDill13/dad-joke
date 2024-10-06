@@ -1,6 +1,5 @@
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NavComponent } from './nav.component';
 import { of } from 'rxjs';
 

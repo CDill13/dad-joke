@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
-
 import { JokeComponent } from './joke.component';
 import { IJoke } from '../utils/jokes.types';
 

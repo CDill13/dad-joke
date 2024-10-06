@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
-import { faHeart, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { JokeService } from '../../services/joke.service';
 import { KneeSlapperComponent } from './knee-slapper.component';
 import { IJoke } from '../utils/jokes.types';

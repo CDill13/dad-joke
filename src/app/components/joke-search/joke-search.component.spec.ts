@@ -4,12 +4,9 @@ import {
   ReactiveFormsModule,
   UntypedFormGroup,
 } from '@angular/forms';
-
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { of } from 'rxjs';
-
 import { JokeService } from '../../services/joke.service';
 import { JokeSearchComponent } from './joke-search.component';
 import { IJoke } from '../utils/jokes.types';
