@@ -10,11 +10,6 @@ import { NoCacheHeadersInterceptor } from './no-cache-headers.interceptor';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: NoCacheHeadersInterceptor,
-    multi: true
-  }],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

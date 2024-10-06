@@ -3,10 +3,10 @@ import {
   provideHttpClientTesting,
   HttpTestingController,
 } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+
 import { JokeService } from './joke.service';
 import { IJoke, IPullMyFingerJoke, ISearchResponse } from '../components/utils/jokes.types';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { uniq } from 'lodash';
 
 describe('JokeService', () => {
   let service: JokeService;

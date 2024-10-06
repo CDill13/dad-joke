@@ -3,13 +3,14 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class NoCacheHeadersInterceptor implements HttpInterceptor {
-    intercept(req: HttpRequest<any>, next: HttpHandler) {
-        const authReq = req.clone({
-            setHeaders: {
-                'Cache-Control': 'no-cache',
-                 Pragma: 'no-cache'
-            }
-        });
-        return next.handle(authReq);
-    }
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    console.log(req.headers);
+    const authReq = req.clone({
+      setHeaders: {
+        'Cache-Control': 'no-cache',
+        Pragma: 'no-cache',
+      }
+    });
+    return next.handle(authReq);
+  }
 }
