@@ -29,4 +29,8 @@ describe('HeaderComponent', () => {
   it('should create the header component', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have correct image for dadJokeImg', () => {
+    expect(component.dadJokeImg()).toEqual('https://www.relativity.com/sites/relativity/cache/file/7D1131F6-208C-4423-B1A8FFADEF8AE53B.png');
+  })
 });

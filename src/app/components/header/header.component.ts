@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { NavComponent } from '../nav/nav.component';
 import { RouterLink } from '@angular/router';
 
@@ -9,4 +9,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  public dadJokeImg = signal('https://www.relativity.com/sites/relativity/cache/file/7D1131F6-208C-4423-B1A8FFADEF8AE53B.png');
+}
