@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { isNil } from 'lodash';
+import { isNil } from 'lodash-es';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JokeService } from '../../services/joke.service';

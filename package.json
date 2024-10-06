@@ -24,7 +24,6 @@
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "jasmine-auto-spies": "^8.0.1",
-    "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "rxjs": "~7.8.0",
     "toastr": "^2.1.4",
