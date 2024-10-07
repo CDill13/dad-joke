@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { GenerateJokesComponent } from '../generate-jokes/generate-joke.component';
 import { JokeSearchComponent } from '../joke-search/joke-search.component';
 
@@ -8,5 +8,6 @@ import { JokeSearchComponent } from '../joke-search/joke-search.component';
   imports: [GenerateJokesComponent, JokeSearchComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {}

@@ -5,13 +5,18 @@ import {
   input,
   signal,
 } from '@angular/core';
+
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { isNil } from 'lodash-es';
+
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { JokeService } from '../../services/joke.service';
 import { ToasterService } from '../../services/toaster.service';
+
 import { JokeComponent } from '../joke/joke.component';
+
 import { IJoke } from '../utils/jokes.types';
 
 @Component({

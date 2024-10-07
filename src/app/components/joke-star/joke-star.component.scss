@@ -1,0 +1,11 @@
+.star {
+  height: 10em;
+  max-height: 10em;
+}
+
+@media screen and (max-width: 48em) {
+  .star {
+    height: 4em;
+    max-height: 4em;
+  }
+}

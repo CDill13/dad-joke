@@ -1,35 +1,35 @@
 <div class="footer-cont">
-  @if (!mobileSize) {
-  <p>
-    This site was made by&nbsp;<a [href]="codyLinkedIn()" target="_blank"
-      >Cody Dillman</a
-    >
-  </p>
-  <p>
-    Find me on LinkedIn
-    <a [href]="codyLinkedIn()" target="_blank">
-      <fa-icon [icon]="faLinkedin()"></fa-icon>
-    </a>
-  </p>
-  <p>
-    Find me on Github
-    <a [href]="codyGitHub()" target="_blank">
-      <fa-icon [icon]="faGitHub()"></fa-icon>
-    </a>
-  </p>
+  @if (mobileSize()) {
+    <p>
+      Created by&nbsp;<a [href]="codyLinkedIn()" target="_blank">Cody Dillman</a>
+    </p>
+    <p>
+      <a [href]="codyLinkedIn()" target="_blank">
+        <fa-icon [icon]="faLinkedin()"></fa-icon>
+      </a>
+    </p>
+    <p>
+      <a [href]="codyGitHub()" target="_blank">
+        <fa-icon [icon]="faGitHub()"></fa-icon>
+      </a>
+    </p>
   } @else {
-  <p>
-    Created by&nbsp;<a [href]="codyLinkedIn()" target="_blank">Cody Dillman</a>
-  </p>
-  <p>
-    <a [href]="codyLinkedIn()" target="_blank">
-      <fa-icon [icon]="faLinkedin()"></fa-icon>
-    </a>
-  </p>
-  <p>
-    <a [href]="codyGitHub()" target="_blank">
-      <fa-icon [icon]="faGitHub()"></fa-icon>
-    </a>
-  </p>
+    <p>
+      This site was made by&nbsp;<a [href]="codyLinkedIn()" target="_blank"
+        >Cody Dillman</a
+      >
+    </p>
+    <p>
+      Find me on LinkedIn
+      <a [href]="codyLinkedIn()" target="_blank">
+        <fa-icon [icon]="faLinkedin()"></fa-icon>
+      </a>
+    </p>
+    <p>
+      Find me on Github
+      <a [href]="codyGitHub()" target="_blank">
+        <fa-icon [icon]="faGitHub()"></fa-icon>
+      </a>
+    </p>
   }
 </div>

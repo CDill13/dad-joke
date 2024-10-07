@@ -13,10 +13,6 @@
       justify-content: space-around;
       align-items: center;
       width: 100%;
-
-      .star {
-        max-height: 10em;
-      }
     }
   }
 
@@ -31,13 +27,6 @@
 
 @media screen and (max-width: 48em) {
   .joke-page-container {
-    .stars {
-      .star-row {
-        .star {
-          max-height: 6em;
-        }
-      }
-    }
     h1 {
       margin-top: 0.5em;
       font-size: 2em;
@@ -49,7 +38,7 @@
   }
 }
 
-@media screen and (max-width: 48em) {
+@media screen and (max-width: 27em) {
   .joke-page-container {
     padding: 1em 0 1em 0;
 

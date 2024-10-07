@@ -3,8 +3,9 @@
     <button (click)="getJoke()">PULL MY FINGER</button>
     <p>(if you dare)</p>
   </div>
+
   <app-joke [joke]="joke()"></app-joke>
   @if (joke() !== undefined) {
-  <app-knee-slapper [joke]="joke()"></app-knee-slapper>
+    <app-knee-slapper [joke]="joke()"></app-knee-slapper>
   }
 </div>

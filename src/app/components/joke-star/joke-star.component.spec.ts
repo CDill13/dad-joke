@@ -5,13 +5,13 @@ import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { of } from 'rxjs';
 
 import { JokeService } from '../../services/joke.service';
-import { JokePageComponent } from './joke-page.component';
+import { JokeStarComponent } from './joke-star.component';
 
 import { IJoke } from '../utils/jokes.types';
 
-describe('JokePageComponent', () => {
-  let component: JokePageComponent;
-  let fixture: ComponentFixture<JokePageComponent>;
+describe('JokeStarComponent', () => {
+  let component: JokeStarComponent;
+  let fixture: ComponentFixture<JokeStarComponent>;
   let jokeServiceSpy: Spy<JokeService>;
   let activatedRouteStub: any;
 
@@ -26,14 +26,15 @@ describe('JokePageComponent', () => {
     activatedRouteStub = { params: of({ jokeId: 'test-id-1' }) };
 
     TestBed.configureTestingModule({
-      imports: [JokePageComponent],
+      imports: [JokeStarComponent],
       providers: [
         { provide: JokeService, useValue: jokeServiceSpy },
         { provide: ActivatedRoute, useValue: activatedRouteStub },
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(JokePageComponent);
+    fixture = TestBed.createComponent(JokeStarComponent);
+    fixture.componentRef.setInput('joke', mockJoke);
     component = fixture.componentInstance;
   });
 
@@ -41,12 +42,7 @@ describe('JokePageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should fetch the joke by id on init', () => {
-    jokeServiceSpy.getJokeById.and.returnValue(of(mockJoke));
-
-    component.ngOnInit();
-
-    expect(jokeServiceSpy.getJokeById).toHaveBeenCalledWith('test-id-1');
-    expect(component.joke()).toEqual(mockJoke);
+  it('should set the background color based on the jokeId', () => {
+    expect(component.starColor()).toBe('rgb(24,48,72)');
   });
 });
