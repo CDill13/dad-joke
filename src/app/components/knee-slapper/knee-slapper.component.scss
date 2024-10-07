@@ -38,3 +38,11 @@ button {
     }
   }
 }
+@media screen and (max-width: 48em) {
+  button {
+    &.large {
+      font-size: 1.25em;
+      padding: 0.5em 1.25em;
+    }
+  }
+}

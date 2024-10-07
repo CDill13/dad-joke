@@ -37,3 +37,17 @@
     }
   }
 }
+
+@media screen and (max-width: 27em) {
+  .header-cont {
+    width: 100%;
+    img {
+      max-width: 6.5em;
+      margin: auto 0 auto 0.25em;
+    }
+    h1,
+    span {
+      display: none;
+    }
+  }
+}

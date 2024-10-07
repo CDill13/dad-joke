@@ -1,6 +1,6 @@
 .search-cont {
   text-align: center;
-  margin-top: 1em;
+  margin-top: 0.5em;
   margin-bottom: 18em;
 
   .joke-item {
@@ -42,6 +42,23 @@
       background-color: darkgreen;
       border-color: white;
       color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 27em) {
+  .search-cont {
+    input {
+      margin-left: unset;
+      margin: 0 auto;
+      max-width: unset;
+      width: calc(100% - 4em);
+      padding: 0.375em 0.5em;
+    }
+    button {
+      padding: 0.375em 0.625em;
+      margin: 0em;
+      margin-left: 0.25em;
     }
   }
 }

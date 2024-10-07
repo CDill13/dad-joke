@@ -16,3 +16,12 @@ button {
 body {
   height: 100vh;
 }
+
+@media screen and (max-width: 27em) {
+  h1 {
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1.25em;
+  }
+}
